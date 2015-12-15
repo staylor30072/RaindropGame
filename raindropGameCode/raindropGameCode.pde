@@ -18,9 +18,11 @@ void draw() {
   r.fall();         //make the raindrop fall. It should accelerate as if pulled towards the ground by earth's gravity
   r.display();      //display the raindrop
   if (r.isInContactWith(mouse)) {      //check to see if the raindrop is in contact with the point represented by the PVector called mouse
-    r.reset();                         //if it is, reset the raindrop
+    r.reset();    //if it is, reset the raindrop
+    println("I CAUGHT THE CIRCLE!!!!!!   ");
   }
   if (r.loc.y > height + r.diam/2) {     //check to see if the raindrop goes below the bottom of the screen
     r.reset();                           //if it does, reset the raindrop
+    println("hit the bottom, you missed it :(     ");
   }
 }
