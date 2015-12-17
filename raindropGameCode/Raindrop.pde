@@ -2,7 +2,7 @@ class Raindrop {
   //declaring all information (fields) contained within the Ball class
   PVector loc, vel;
   float diam;
-  float gravity= 1;
+  float gravity;
   color c;
 
   //this is the constructor
@@ -13,6 +13,7 @@ class Raindrop {
     c= color(255); //Makes raindrops blue
     vel = PVector.random2D();
     vel.mult(20);
+    gravity = random(.5,1);
   }
 
   void display () {    //display the raindrop on the screen

@@ -1,6 +1,8 @@
 PVector mouse;   //declare a P
 int count=4;
 Raindrop[] r= new Raindrop[count];      //declare a new Raindrop called r
+int rec =150;
+Catcher bucket;
 
 // On your own, create an array of Raindrop objects instead of just one
 // Use the array instead of the single object
@@ -13,6 +15,7 @@ void setup() {
   for (int i=0; i<count; i++) {
     r [i]= new Raindrop(random(width), 0);   //Initialize r. The parameters used are the initial x and y positions
   }
+    bucket = new Catcher(width/2,height/2);
 
 }
 
@@ -31,4 +34,5 @@ void draw() {
       println("hit the bottom, you missed it :(     ");
     }
   }
+
 }
