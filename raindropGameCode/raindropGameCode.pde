@@ -33,6 +33,6 @@ void draw() {
       println("hit the bottom, you missed it :(     ");
     }
   }
-  bucket.display();
+  bucket.update();
   
 }

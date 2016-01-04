@@ -20,7 +20,11 @@ class Catcher {
     rect(loc.x, loc.y, diam-20, diam-20);
   }
 
-  /*void refresh() {
+  void update() {
    rectMode(RADIUS);
-   fill(*/
+    fill(c);
+    rect(mouseX,mouseY, diam, diam);
+    fill(c1,c2,c);
+    rect(mouseX, mouseY, diam-20, diam-20);
+  }
 }
