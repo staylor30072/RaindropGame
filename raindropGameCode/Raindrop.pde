@@ -10,7 +10,7 @@ class Raindrop {
     filter(BLUR);
     diam=random(20, 30);
     loc= new PVector(p, g); //Makes rainsdrops start at top of page 
-    c= color(255); //Makes raindrops blue
+    c= color(255); //Makes raindrops white
     vel = PVector.random2D();
     vel.mult(20);
     gravity = random(.5,1);

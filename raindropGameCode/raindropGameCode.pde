@@ -15,8 +15,7 @@ void setup() {
   for (int i=0; i<count; i++) {
     r [i]= new Raindrop(random(width), 0);   //Initialize r. The parameters used are the initial x and y positions
   }
-    bucket = new Catcher(width/2,height/2);
-
+  bucket = new Catcher(width/2, height/2);
 }
 
 void draw() {
@@ -34,5 +33,6 @@ void draw() {
       println("hit the bottom, you missed it :(     ");
     }
   }
-
+  bucket.display();
+  
 }

@@ -1,8 +1,7 @@
 class Catcher {
   float diam;
   PVector loc;
-  float c;
-  float c1;
+  float c, c1;
 
   //constructor
   Catcher(float p, float g) {
@@ -19,5 +18,4 @@ class Catcher {
     fill(c1);
     rect(loc.x, loc.y, diam-20, diam-20);
   }
-
 }
