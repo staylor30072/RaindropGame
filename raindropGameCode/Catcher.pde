@@ -10,21 +10,26 @@ class Catcher {
     c = 255;
     c1 = 0;
     c2 = 200;
+    strokeWeight(5);
   }
 
   void display() {
     rectMode(RADIUS);
     fill(c);
     rect(loc.x, loc.y, diam, diam);
-    fill(c1,c2,c);
-    rect(loc.x, loc.y, diam-20, diam-20);
+    stroke(c1,c2,c);
+    line(loc.x-diam+5,loc.y+diam-5,loc.x+diam-5,loc.y+diam-5);
   }
 
   void update() {
    rectMode(RADIUS);
     fill(c);
+    noStroke();
     rect(mouseX,mouseY, diam, diam);
-    fill(c1,c2,c);
-    rect(mouseX, mouseY, diam-20, diam-20);
+    stroke(c1,c2,c);
+    line(mouseX-diam+5,mouseY+diam-5,mouseX+diam-5,mouseY+diam-5);
   }
+  
+  /*boolean letUsCatchAtOnce(PVector yum){
+    if(dist(yum.x,loc.x+diam,yum.y,*/
 }
