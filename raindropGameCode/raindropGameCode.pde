@@ -3,6 +3,7 @@ int count=4;
 Raindrop[] r= new Raindrop[count];      //declare a new Raindrop called r
 int rec =150;
 Catcher bucket;
+Timer theBucketSlayer;
 
 // On your own, create an array of Raindrop objects instead of just one
 // Use the array instead of the single object
@@ -16,6 +17,7 @@ void setup() {
     r [i]= new Raindrop(random(width), 0);   //Initialize r. The parameters used are the initial x and y positions
   }
   bucket = new Catcher(width/2, height/2);
+  theBucketSlayer = new Timer();
 }
 
 void draw() {
@@ -33,12 +35,11 @@ void draw() {
       r[i].reset();                           //if it does, reset the raindrop
       println("hit the bottom, you missed it :(     ");
     }
-    if (bucket.isInContactWith(r[i].loc)){      //checks to see if drop is touching bucket
+    if (bucket.isInContactWith(r[i].loc)) {      //checks to see if drop is touching bucket
       println("im in a cup");
       r[i].reset();                          //if above is true, reset drop
     }
-
   }
+  theBucketSlayer.update();
 
-  
 }
