@@ -29,6 +29,7 @@ class Catcher {
     rect(mouseX, mouseY, diam, diam);
     stroke(c1, c2, c);
     line(mouseX-diam+5, mouseY+diam-5, mouseX+diam-5, mouseY+diam-5);
+    line(loc.x-diam+a, loc.y+diam-5, loc.x+diam-a, loc.y+diam-5);
   }
 
   boolean isInContactWith(PVector yay) {
@@ -37,11 +38,5 @@ class Catcher {
     } else {
       return false;
     }
-  }
-
-  void h20YO() {
-    stroke(c1,c2,c);
-    a+=5;
-    line(loc.x-diam+5, loc.y+diam-a, loc.x+diam-5, loc.y+diam-a);
   }
 }

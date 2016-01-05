@@ -36,7 +36,6 @@ void draw() {
     if (bucket.isInContactWith(r[i].loc)){      //checks to see if drop is touching bucket
       println("im in a cup");
       r[i].reset();                          //if above is true, reset drop
-      bucket.h20YO();
     }
 
   }
