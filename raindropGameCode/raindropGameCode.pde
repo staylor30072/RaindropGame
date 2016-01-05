@@ -21,6 +21,7 @@ void setup() {
 void draw() {
   mouse.set(mouseX, mouseY);             //set value of mouse as mouseX,mouseY
   background(0, 200, 255);
+  bucket.update();
   for (int i = 0; i<count; i++) {
     r[i].fall();         //make the raindrop fall. It should accelerate as if pulled towards the ground by earth's gravity
     r[i].display();      //display the raindrop
@@ -32,8 +33,13 @@ void draw() {
       r[i].reset();                           //if it does, reset the raindrop
       println("hit the bottom, you missed it :(     ");
     }
+    if (bucket.isInContactWith(r[i].loc)){      //checks to see if drop is touching bucket
+      println("im in a cup");
+      r[i].reset();                          //if above is true, reset drop
+      bucket.h20YO();
+    }
+
   }
-  bucket.update();
 
   
 }

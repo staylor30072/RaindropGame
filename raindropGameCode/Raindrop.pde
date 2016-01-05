@@ -39,6 +39,7 @@ class Raindrop {
   }
   void reset() {
     loc.y=0;
+    loc.x=random(width);
     vel = PVector.random2D();
     vel.mult(5);
   }
