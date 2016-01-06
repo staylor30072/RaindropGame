@@ -3,10 +3,10 @@ int count=10;
 ArrayList<Raindrop> r = new ArrayList<Raindrop>();
 int rec =150;
 Catcher bucket;
-Timer theBucketSlayer;
 int yaass=0;
 int ewNo=0;
 int mode=0;
+int tim=0;
 
 // On your own, create an array of Raindrop objects instead of just one
 // Use the array instead of the single object
@@ -18,7 +18,6 @@ void setup() {
   mouse = new PVector();                //initialize mouse PVector. value is irrelevant since it will be set at the start of void draw(){}
   r.add(new Raindrop(random(width), 0));
   bucket = new Catcher(width/2, height/2);
-  theBucketSlayer = new Timer();
 }
 
 void draw() {
@@ -80,9 +79,19 @@ void draw() {
     textSize(100);
     fill(255);
     text(yaass, 3*width/4, height/4-50);
+    textSize(50);
+    text("Clean",3*width/4+100,height/4-50);
     fill(102, 153, 0);
+    text("Dirty", 3*width/4+100,height/4+50);
+    textSize(100);
     text(ewNo, 3*width/4, height/4+50);
-    theBucketSlayer.update();
+    //Timer
+    if(frameCount%10==0){
+      tim+=1;
+    }
+    fill(255);
+    textSize(200);
+    text(tim,width/4,height/4);
   }
 }
 void keyPressed() {
