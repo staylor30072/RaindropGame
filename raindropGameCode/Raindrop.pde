@@ -34,21 +34,21 @@ class Raindrop {
     }
   }
 
-  boolean isInContactWith(PVector yay) {
+  boolean isInContactWith(PVector yay) {    //Checks to see if PVector is touching Raindrop
     if (dist(yay.x, yay.y, loc.x, loc.y)<diam/2) {
       return true;
     } else {
       return false;
     }
   }
-  void reset() {
+  void reset() {      //Makes Raindrop restart at top of the code
     loc.y=0;
-    //loc.x=random(width);
+    loc.x=random(width);
     vel = PVector.random2D();
     vel.mult(5);
   }
 
-  void dirtyWater() {
+  void dirtyWater() {    //Makes different colored raindrops
     if (randy<.6) {
       c=a;
     } else {
@@ -57,7 +57,7 @@ class Raindrop {
     }
   }
 
-  boolean ewNasty() {
+  boolean ewNasty() {      //Checks to see if the water is dirty
     if (c==b) {
       return true;
     } else {

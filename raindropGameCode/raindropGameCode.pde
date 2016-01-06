@@ -1,3 +1,4 @@
+//Declaration of variables
 PVector mouse;   //declare a P
 int count=10;
 ArrayList<Raindrop> r = new ArrayList<Raindrop>();
@@ -7,6 +8,8 @@ int yaass=0;
 int ewNo=0;
 int mode=0;
 int tim=0;
+int denom;
+float frac;
 
 // On your own, create an array of Raindrop objects instead of just one
 // Use the array instead of the single object
@@ -21,7 +24,7 @@ void setup() {
 }
 
 void draw() {
-  if (mode==0) {
+  if (mode==0) {            //Opening screen
     background(0, 200, 255);
     bucket.display();
     fill(255);
@@ -32,12 +35,16 @@ void draw() {
     text("Fill your bucket with clean water", width/2, 3*height/4);
     text("as quickly as possible.", width/2, 3*height/4+50);
     text("Press Enter to begin", width/2, 3*height/4+150);
+    yaass=0;
+    ewNo=0;
+    bucket.refillMeBaby();
+    
   }
   if (mode==1) {
     mouse.set(mouseX, mouseY);             //set value of mouse as mouseX,mouseY
     background(0, 200, 255);
-    bucket.update();
-    if (frameCount%10==0) {
+    bucket.update();                      //Makes bucket follow mouse
+    if (frameCount%10==0) {                //adds raindrops to the game at specific times
       r.add(new Raindrop(random(width), 0));
     }
     for (int i = r.size()-1; i>=0; i--) {
@@ -52,56 +59,102 @@ void draw() {
       }
 
       if (ro.loc.y > height + ro.diam/2) {     //check to see if the raindrop goes below the bottom of the screen
-        ro.reset();                           //if it does, reset the raindrop
         println("hit the bottom, you missed it :(     ");
-        r.remove(i);
+        r.remove(i);                            //if above is true remove drop from screen
       }
 
       if (bucket.isInContactWith(ro.loc)) {      //checks to see if drop is touching bucket
-        println("im in a cup");
-        ro.reset();                          //if above is true, reset dro
+        println("im in a cup");                          //if above is true, remove drop
         r.remove(i);
-        if (ro.ewNasty()) {
+        if (ro.ewNasty()) {                   //if drop is dirty, add point to dirty water droplet
           println("ewwwwww");
           ewNo+=1;
-        } else {
+        } else {                            //if drop is clean, add point to clean water drop
           yaass+=1;
         }
       }
-      
-      if(bucket.amIFull()){
+
+      if (bucket.amIFull()) {      //If the bucket is full, end the game
         println("YA DID IT OLD SPORT!");
+        mode=2;
       }
     }
 
-    //Point Sytem
+    //Point System Displayal
     textAlign(CENTER);
     textSize(100);
     fill(255);
     text(yaass, 3*width/4, height/4-50);
     textSize(50);
-    text("Clean",3*width/4+100,height/4-50);
+    text("Clean", 3*width/4+200, height/4-50);
     fill(102, 153, 0);
-    text("Dirty", 3*width/4+100,height/4+50);
+    text("Dirty", 3*width/4+200, height/4+50);
     textSize(100);
     text(ewNo, 3*width/4, height/4+50);
+    
+    
     //Timer
-    if(frameCount%10==0){
+    if (frameCount%10==0) {
       tim+=1;
     }
     fill(255);
     textSize(200);
-    text(tim,width/4,height/4);
+    text(tim, width/4, height/4);
+  }
+  if (mode==2) {
+    background(0, 200, 255);
+
+    //Final Drop Score
+    textAlign(CENTER);
+    textSize(100);
+    fill(255);
+    text(yaass, 3*width/4, height/4-50);
+    textSize(50);
+    text("Clean", 3*width/4+200, height/4-50);
+    fill(102, 153, 0);
+    text("Dirty", 3*width/4+200, height/4+50);
+    textSize(100);
+    text(ewNo, 3*width/4, height/4+50);
+
+    //Timer
+    fill(255);
+    textSize(200);
+    text(tim, width/4, height/4);
+
+    //Drinkibility Nonsense
+    if (ewNo>yaass) {    //If there are more dirty water droplets than clean water droplets
+      fill(102, 153, 0);
+      textSize(100);
+      text("I wouldn't ",width/2,height/2-50);
+      text("drink that...", width/2, height/2+50);
+    }
+    if (yaass>ewNo){    //if there are more clean water droplets than dirty
+      fill(255);
+      textSize(100);
+      text("Yum, refreshing.", width/2, height/2);
+    }
+    if(yaass==ewNo){    //if there are an equal amount of water droplets
+      fill(255);
+      textSize(100);
+      text("#BarelyDrinkable.", width/2, height/2);
+    }
+    //Tells player how to go back to opening page
+    textSize(50);
+    fill(255);
+    text("Press Backspace to Begin Again",width/2,3*height/4);
   }
 }
 void keyPressed() {
-  if (keyCode==ENTER) {
+  if (keyCode==ENTER) {    //if player hits enter, enter main game sequence
     mode=1;
   } 
-  if (keyCode==ESC) {
+  if (keyCode==ESC) {    //if player hits escape, leave the program
     exit();
   }
-  if (keyCode==BACKSPACE) {
+  if (keyCode==BACKSPACE) {    //if player hits backspace, screen shows opening page
     mode=0;
+  }
+  if (keyCode==UP) {      //If player hits up, game automatically ends (for testing purposes)
+    mode=2;
   }
 }
