@@ -19,7 +19,7 @@ class Timer{
   
   void update(){  
   tim1+=1;
-  if (tim1%6==0) {
+  if (frameCount%10==0) {
     tim2+=1;
   }
   fill(t);

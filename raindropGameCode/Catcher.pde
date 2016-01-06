@@ -19,7 +19,13 @@ class Catcher {
   void display() {
     rectMode(RADIUS);
     fill(c);
+    noStroke();
     rect(loc.x, loc.y, diam, diam);
+    stroke(c1, c2, c);
+    fill(c1, c2, c);
+    rect(loc.x, loc.y+diam, diam-4, count);
+    stroke(c);
+    line(loc.x-diam, loc.y+diam, loc.x+diam, loc.y+diam);
   }
 
   void update() {
@@ -43,10 +49,11 @@ class Catcher {
     }
   }
 
-  void pointSystem(float p, float b, float j, int points) {
-
-    textAlign(CENTER);
-    textSize(j);
-    text(points, p, b);
+  boolean amIFull() {
+    if (count>=2*diam-4) {
+      return true;
+    } else {
+      return false;
+    }
   }
 }
