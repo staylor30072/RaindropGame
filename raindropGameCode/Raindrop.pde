@@ -49,7 +49,7 @@ class Raindrop {
   }
 
   void dirtyWater() {    //Makes different colored raindrops
-    if (randy<.6) {
+    if (randy<.5) {
       c=a;
     } else {
       c=b;

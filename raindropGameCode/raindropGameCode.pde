@@ -141,10 +141,11 @@ void draw() {
       textSize(100);
       text("#BarelyDrinkable.", width/2, height/2);
     }
-    //Tells player how to go back to opening page
+    //Tells player how to go back to opening page or exit game
     textSize(50);
     fill(255);
     text("Press ESC to exit", width/2, 3*height/4);
+    text("Press Backspace to Begin Again",width/2, 3*height/4+50);
   }
 }
 void keyPressed() {

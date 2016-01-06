@@ -60,7 +60,7 @@ class Catcher {
     }
   }
 
-  void refillMeBaby() {
+  void refillMeBaby() {      // amount of water in bucket resets
     count=3;
   }
 }
