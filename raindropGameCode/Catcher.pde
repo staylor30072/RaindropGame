@@ -59,10 +59,8 @@ class Catcher {
       return false;
     }
   }
-  
-  void refillMeBaby(){
-    if(amIFull()){
-      count=3;
-    }
+
+  void refillMeBaby() {
+    count=3;
   }
 }

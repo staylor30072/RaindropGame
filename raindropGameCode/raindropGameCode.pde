@@ -24,6 +24,7 @@ void setup() {
 }
 
 void draw() {
+
   if (mode==0) {            //Opening screen
     background(0, 200, 255);
     bucket.display();
@@ -35,12 +36,14 @@ void draw() {
     text("Fill your bucket with clean water", width/2, 3*height/4);
     text("as quickly as possible.", width/2, 3*height/4+50);
     text("Press Enter to begin", width/2, 3*height/4+150);
+    //Resets points, timer, and bucket
     yaass=0;
     ewNo=0;
     bucket.refillMeBaby();
-    
+    tim=0;
   }
-  if (mode==1) {
+
+  if (mode==1) {        //Game
     mouse.set(mouseX, mouseY);             //set value of mouse as mouseX,mouseY
     background(0, 200, 255);
     bucket.update();                      //Makes bucket follow mouse
@@ -91,8 +94,8 @@ void draw() {
     text("Dirty", 3*width/4+200, height/4+50);
     textSize(100);
     text(ewNo, 3*width/4, height/4+50);
-    
-    
+
+
     //Timer
     if (frameCount%10==0) {
       tim+=1;
@@ -101,7 +104,7 @@ void draw() {
     textSize(200);
     text(tim, width/4, height/4);
   }
-  if (mode==2) {
+  if (mode==2) {      //Ending Screen
     background(0, 200, 255);
 
     //Final Drop Score
@@ -125,15 +128,15 @@ void draw() {
     if (ewNo>yaass) {    //If there are more dirty water droplets than clean water droplets
       fill(102, 153, 0);
       textSize(100);
-      text("I wouldn't ",width/2,height/2-50);
+      text("I wouldn't ", width/2, height/2-50);
       text("drink that...", width/2, height/2+50);
     }
-    if (yaass>ewNo){    //if there are more clean water droplets than dirty
+    if (yaass>ewNo) {    //if there are more clean water droplets than dirty
       fill(255);
       textSize(100);
       text("Yum, refreshing.", width/2, height/2);
     }
-    if(yaass==ewNo){    //if there are an equal amount of water droplets
+    if (yaass==ewNo) {    //if there are an equal amount of water droplets
       fill(255);
       textSize(100);
       text("#BarelyDrinkable.", width/2, height/2);
@@ -141,7 +144,7 @@ void draw() {
     //Tells player how to go back to opening page
     textSize(50);
     fill(255);
-    text("Press Backspace to Begin Again",width/2,3*height/4);
+    text("Press ESC to exit", width/2, 3*height/4);
   }
 }
 void keyPressed() {
@@ -151,7 +154,7 @@ void keyPressed() {
   if (keyCode==ESC) {    //if player hits escape, leave the program
     exit();
   }
-  if (keyCode==BACKSPACE) {    //if player hits backspace, screen shows opening page
+  if (keyCode==BACKSPACE) {    //if player hits backspace, program shows opening page
     mode=0;
   }
   if (keyCode==UP) {      //If player hits up, game automatically ends (for testing purposes)
