@@ -10,6 +10,8 @@ int mode=0;
 int tim=0;
 int denom;
 float frac;
+int m = millis();
+
 
 // On your own, create an array of Raindrop objects instead of just one
 // Use the array instead of the single object
@@ -47,8 +49,8 @@ void draw() {
     mouse.set(mouseX, mouseY);             //set value of mouse as mouseX,mouseY
     background(0, 200, 255);
     bucket.update();                      //Makes bucket follow mouse
-    if (frameCount%10==0) {                //adds raindrops to the game at specific times
-      r.add(new Raindrop(random(width), 0));
+    if (m%1==0) {                //adds raindrops to the game at specific times
+     r.add(new Raindrop(random(width), 0));
     }
     for (int i = r.size()-1; i>=0; i--) {
       Raindrop ro=r.get(i);
